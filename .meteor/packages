@@ -12,3 +12,5 @@ velocity:console-reporter
 xolvio:webdriver
 sanjo:jasmine
 velocity:html-reporter
+accounts-password
+accounts-ui
