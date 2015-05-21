@@ -1,8 +1,8 @@
 .meteor/local
 .meteor/meteorite
 
-.idea/
-
 tests/cucumber/.screenshots/
-tests/cucumber/node_modules/# IntelliJ IDEA files
+tests/cucumber/node_modules/
+
+# IntelliJ IDEA files
 .idea/*
