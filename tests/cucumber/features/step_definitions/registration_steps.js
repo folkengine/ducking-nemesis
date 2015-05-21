@@ -18,7 +18,6 @@
 
         this.When(/^I navigate to the "(.*)"$/, function (relativePath, callback) {
 
-
             // helper.world.browser.url(url.resolve(helper.world.mirrorUrl, relativePath)).call(callback);
 
             // console.log(">>>>> " + relativePath)

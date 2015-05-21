@@ -10,3 +10,5 @@ insecure
 xolvio:cucumber
 velocity:console-reporter
 xolvio:webdriver
+sanjo:jasmine
+velocity:html-reporter
