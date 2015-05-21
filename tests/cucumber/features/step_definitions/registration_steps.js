@@ -37,7 +37,8 @@
 
         });
 
-        this.Then(/^Then I should see a button that says "(.*)"/, function (buttonTxt, callback) {
+
+        this.Then(/^I should see the "(.*)" element/, function (elementId, callback) {
             // you can use chai-as-promised in step definitions also
 
             console.log("My button: " + this.client.getText('button'))
