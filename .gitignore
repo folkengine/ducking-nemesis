@@ -4,4 +4,5 @@
 .idea/
 
 tests/cucumber/.screenshots/
-tests/cucumber/node_modules/
+tests/cucumber/node_modules/# IntelliJ IDEA files
+.idea/*
