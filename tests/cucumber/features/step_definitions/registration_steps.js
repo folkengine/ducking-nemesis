@@ -44,13 +44,7 @@
         });
 
         this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
-            this.client.getHTML("#login-dropdown-list", false, function(err, html) {
-                if (err) {
-                    console.log("err> " + err);
-                }
-            }).should.exist.and.notify(callback)
-
-
+            this.client.getHTML("#login-dropdown-list", false, callback);
         });
 
         this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
