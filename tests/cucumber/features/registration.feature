@@ -8,7 +8,7 @@ Feature: User Identification
 
   Scenario: Authentication
     When I navigate to the "index"
+    And I click the "login-link-test" link
     Then I should see the title "ducking"
-    Then I should see the "login-buttons" element
-
-
+    And I should see the "login-buttons" element
+    And I should see the "login-dropdown-list"
