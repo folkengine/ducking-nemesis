@@ -11,4 +11,4 @@ Feature: User Identification
     And I click the "login-link-test" link
     Then I should see the title "ducking"
     And I should see the "login-buttons" element
-    And I should see the "login-dropdown-list"
+    And I should see the "login-dropdown-list" element

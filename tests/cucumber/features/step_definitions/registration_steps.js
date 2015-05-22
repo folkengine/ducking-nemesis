@@ -29,7 +29,12 @@
         });
         // Then I should see a button that says "Click Me"
 
-        this.Then(/^I should see the title "([^"]*)"$/, function (expectedTitle, callback) {
+        this.When(/^I click the "([^"]*)"$/, function (arg1, callback) {
+            // Write code here that turns the phrase above into concrete actions
+            callback.pending();
+        });
+
+        this.Then(/^I should see the title "([^"]*)" link$/, function (expectedTitle, callback) {
             // you can use chai-as-promised in step definitions also
             this.client.
                 waitForVisible('body *'). // WebdriverIO chain-able promise magic

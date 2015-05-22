@@ -7085,7 +7085,7 @@ var packageMetadata = {
                 },
                 "version": {
                   "type": "constant",
-                  "value": "905a54e49283f03eda9f896ec67f122f52f5038a"
+                  "value": "b2fff665fb93915207e6609051c4f3596c565a40"
                 },
                 "PUBLIC_SETTINGS": {
                   "type": "undefined"
@@ -7209,7 +7209,7 @@ var packageMetadata = {
             },
             "connections": {
               "type": "constant",
-              "value": 0
+              "value": 1
             },
             "timeout": {
               "type": "constant",
@@ -7854,7 +7854,7 @@ var packageMetadata = {
       "members": {
         "autoupdateVersion": {
           "type": "constant",
-          "value": "a0401b605faad639e99dee572bd596e0b8b6bbba"
+          "value": "f7245aa2b7c9c559a384fe7227eef4393afd52f7"
         },
         "autoupdateVersionRefreshable": {
           "type": "constant",
@@ -9387,15 +9387,15 @@ var packageMetadata = {
                 },
                 "appPath": {
                   "type": "constant",
-                  "value": "/Users/chris/opt/src/pillar/internal/ducking-nemesis"
+                  "value": "/Users/aaron/Dropbox/Code/ducking-nemesis"
                 },
                 "pid": {
                   "type": "constant",
-                  "value": 61475
+                  "value": 48409
                 },
                 "fout": {
                   "type": "constant",
-                  "value": 42
+                  "value": 41
                 },
                 "child": {
                   "type": "object",
@@ -9414,7 +9414,7 @@ var packageMetadata = {
                     },
                     "pid": {
                       "type": "constant",
-                      "value": 61475
+                      "value": 48409
                     },
                     "stdin": {
                       "type": "null",
