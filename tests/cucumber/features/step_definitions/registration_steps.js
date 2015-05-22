@@ -29,9 +29,15 @@
         });
 
         this.When(/^I click the "([^"]*)" link$/, function (arg1, callback) {
-            // Write code here that turns the phrase above into concrete actions
-            // callback.pending();
-            this.client.call(callback);
+            var cli = this.client;
+            this.client.waitForVisible('body *').isExisting('#login-dropdown-list', function(err, isExisting) {
+                if(!isExisting) {
+                    console.log("login-link-text not existing")
+                    cli.click('.login-link-textASDFASDF', function() {})
+                    console.log("post click")
+                    cli.getHTML('.login-link-text').should.exist.and.notify(callback)
+                }
+            })
         });
 
         this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
