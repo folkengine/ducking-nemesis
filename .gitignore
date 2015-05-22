@@ -6,3 +6,4 @@ tests/cucumber/node_modules/
 
 # IntelliJ IDEA files
 .idea/*
+*.iml
