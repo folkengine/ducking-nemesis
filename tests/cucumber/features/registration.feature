@@ -13,3 +13,6 @@ Feature: User Identification
     And I should see the "login-buttons" element
     And I should see the ".login-link-text" element
     And I should now see the ".login-dropdown-list" element
+    And I should not be able to see content that requires Authentication
+
+

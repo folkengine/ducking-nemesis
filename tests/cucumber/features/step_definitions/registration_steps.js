@@ -43,10 +43,6 @@
             //})
         });
 
-        this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
-            this.client.getHTML("#login-dropdown-list", false, callback);
-        });
-
         this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
             // Write code here that turns the phrase above into concrete actions
             this.client.call(callback);
@@ -55,6 +51,18 @@
         this.Then(/^I should see the "([^"]*)" element$/, function (arg1, callback) {
             // Write code here that turns the phrase above into concrete actions
             this.client.call(callback);
+        });
+
+        this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
+            this.client.getHTML("#login-dropdown-list", false, callback);
+        });
+
+        this.Then(/^I should not be able to see content that requires Authentication$/, function (callback) {
+            var cli = this.client;
+            this.client.isExisting('#protected', function(err, isExisting) {
+                isExisting.should.be.false
+                console.log(isExisting); // outputs: false
+            }).call(callback);
         });
     };
 })();
