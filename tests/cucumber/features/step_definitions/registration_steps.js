@@ -61,7 +61,6 @@
             var cli = this.client;
             this.client.isExisting('#protected', function(err, isExisting) {
                 isExisting.should.be.false
-                console.log(isExisting); // outputs: false
             }).call(callback);
         });
     };
