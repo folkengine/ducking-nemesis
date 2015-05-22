@@ -19,5 +19,7 @@
 </template>
 
 <template name="protected">
-  <div id="protected"></div>
+  {{#if currentUser}}
+    <div id="protected"></div>
+  {{/if}}
 </template>
