@@ -9,6 +9,6 @@ Feature: User Identification
   Scenario: Authentication
     When I navigate to the "index"
     Then I should see the title "ducking"
-    Then I should see a button that says ClickMe
+    Then I should see the "login-buttons" element
 
 
