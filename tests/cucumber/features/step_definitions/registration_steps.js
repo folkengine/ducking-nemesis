@@ -28,16 +28,34 @@
                 call(callback);
         });
 
-        this.When(/^I click the "([^"]*)" link$/, function (arg1, callback) {
+        this.When(/^I click the "([^"]*)" link$/, function (linkClass, callback) {
             var cli = this.client;
-            this.client.waitForVisible('body *').isExisting('#login-dropdown-list', function(err, isExisting) {
-                if(!isExisting) {
-                    console.log("login-link-text not existing")
-                    cli.click('.login-link-textASDFASDF', function() {})
-                    console.log("post click")
-                    cli.getHTML('.login-link-text').should.exist.and.notify(callback)
+
+            this.client.waitForVisible('body *').click(linkClass, callback);
+
+            //this.client.waitForVisible('body *').isExisting('#login-dropdown-list', function(err, isExisting) {
+            //    if(!isExisting) {
+            //        console.log("login-link-text not existing")
+            //        cli.click('.login-link-textASDFASDF', function() {})
+            //        console.log("post click")
+            //        cli.getHTML('.login-link-text').should.exist.and.notify(callback)
+            //    }
+            //})
+        });
+
+        this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
+
+            // console.log("out");
+
+            this.client.getHTML("#login-dropdown-list", false, function(err, html) {
+                //console.log("in");
+                //console.log(html);
+                if (err) {
+                    console.log("err> " + err);
                 }
-            })
+            }).should.exist.and.notify(callback)
+
+
         });
 
         this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
