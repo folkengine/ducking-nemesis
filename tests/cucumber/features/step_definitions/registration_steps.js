@@ -63,5 +63,21 @@
                 isExisting.should.be.false
             }).call(callback);
         });
+
+        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+        // Registration
+
+        this.When(/^I register for the first time$/, function (callback) {
+
+            this.client.setValue('#login-email', 'test123@foo.com')
+                .setValue('#login-password', 'yadayadayaday')
+                .click('#login-buttons-password')
+                .call(callback);
+        });
+
+        this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
+            this.client.getHTML("#protected", false, callback);
+        });
+
     };
 })();
