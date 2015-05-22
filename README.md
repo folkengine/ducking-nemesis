@@ -37,3 +37,10 @@ Then add to your ~/.bash_profile:
     
 From [https://gist.github.com/DanHerbert/9520689](https://gist.github.com/DanHerbert/9520689)
     
+## Example
+    
+    this.client.getHTML("#login-dropdown-list", false, function(err, html) {
+        if (err) {
+            console.log("err> " + err);
+        }
+    }).should.exist.and.notify(callback)
