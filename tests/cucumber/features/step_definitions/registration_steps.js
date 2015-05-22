@@ -44,12 +44,7 @@
         });
 
         this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
-
-            // console.log("out");
-
             this.client.getHTML("#login-dropdown-list", false, function(err, html) {
-                //console.log("in");
-                //console.log(html);
                 if (err) {
                     console.log("err> " + err);
                 }
