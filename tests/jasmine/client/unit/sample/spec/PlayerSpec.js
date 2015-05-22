@@ -1,6 +1,6 @@
 /* globals Player: false, Song: false */
 
-describe('Player', function() {
+xdescribe('Player', function() {
   var player;
   var song;
 

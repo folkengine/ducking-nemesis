@@ -2,7 +2,22 @@
 How well can you duck from your nemesis?
 
 
+Links
+=====
 
+Pages
+
+* [The Meteor Testing Manual](http://www.meteortesting.com/)
+* [Unit testing with Meteor](http://xolv.io/blog/2013/04/unit-testing-with-meteor)
+* [Chai Assertion Library](http://chaijs.com/)
+* [DDP - Distributed Data Protocol](https://www.meteor.com/ddp)
+* [Cucumber.io](https://cucumber.io/)
+* [Webdriver.io](http://webdriver.io/)
+
+Code
+
+* [Meteor-Cucumber](https://github.com/xolvio/meteor-cucumber)
+* [Velocity](https://github.com/meteor-velocity/velocity)
 
 Installing NPM with Homebrew
 ============================

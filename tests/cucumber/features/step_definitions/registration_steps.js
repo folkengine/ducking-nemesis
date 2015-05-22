@@ -27,30 +27,21 @@
                 url(url.resolve(process.env.ROOT_URL, relativePath)). // process.env.ROOT_URL always points to the mirror
                 call(callback);
         });
-        // Then I should see a button that says "Click Me"
 
-        this.When(/^I click the "([^"]*)"$/, function (arg1, callback) {
+        this.When(/^I click the "([^"]*)" link$/, function (arg1, callback) {
             // Write code here that turns the phrase above into concrete actions
-            callback.pending();
+            // callback.pending();
+            this.client.call(callback);
         });
 
-        this.Then(/^I should see the title "([^"]*)" link$/, function (expectedTitle, callback) {
-            // you can use chai-as-promised in step definitions also
-            this.client.
-                waitForVisible('body *'). // WebdriverIO chain-able promise magic
-                getTitle().should.become(expectedTitle).and.notify(callback);
-
+        this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
+            // Write code here that turns the phrase above into concrete actions
+            this.client.call(callback);
         });
 
-
-        this.Then(/^I should see the "(.*)" element/, function (buttonTxt, callback) {
-            // you can use chai-as-promised in step definitions also
-
-            console.log("My button: " + this.client.getText('button'))
-
-            this.client.
-                waitForVisible('button'). // WebdriverIO chain-able promise magic
-                getText('button').should.become(buttonTxt).and.notify(callback);
+        this.Then(/^I should see the "([^"]*)" element$/, function (arg1, callback) {
+            // Write code here that turns the phrase above into concrete actions
+            this.client.call(callback);
         });
     };
 })();

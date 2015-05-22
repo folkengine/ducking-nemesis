@@ -9387,15 +9387,15 @@ var packageMetadata = {
                 },
                 "appPath": {
                   "type": "constant",
-                  "value": "/Users/aaron/Dropbox/Code/ducking-nemesis"
+                  "value": "/Users/chris/opt/src/pillar/internal/ducking-nemesis"
                 },
                 "pid": {
                   "type": "constant",
-                  "value": 48409
+                  "value": 1513
                 },
                 "fout": {
                   "type": "constant",
-                  "value": 41
+                  "value": 42
                 },
                 "child": {
                   "type": "object",
@@ -9414,7 +9414,7 @@ var packageMetadata = {
                     },
                     "pid": {
                       "type": "constant",
-                      "value": 48409
+                      "value": 1513
                     },
                     "stdin": {
                       "type": "null",
