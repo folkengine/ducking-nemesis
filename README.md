@@ -7,6 +7,7 @@ Links
 
 Pages
 
+* [Your First Meteor Application](http://meteortips.com/first-meteor-tutorial/)
 * [The Meteor Testing Manual](http://www.meteortesting.com/)
 * [Unit testing with Meteor](http://xolv.io/blog/2013/04/unit-testing-with-meteor)
 * [Chai Assertion Library](http://chaijs.com/)
