@@ -28,12 +28,8 @@
             this.client.call(callback);
         });
 
-        this.Then(/^I should see the "([^"]*)" element$/, function (arg1, callback) {
-            this.client.call(callback);
-        });
-
-        this.Then(/^I should now see the ".login-dropdown-list" element$/, function (callback) {
-            this.client.getHTML("#login-dropdown-list", false, callback);
+        this.Then(/^I should see the "([^"]*)" element$/, function (element, callback) {
+            this.client.waitForVisible(element, 500, false, callback);
         });
 
         this.Then(/^I should not be able to see content that requires Authentication$/, function (callback) {
