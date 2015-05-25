@@ -25,6 +25,7 @@
         });
 
         this.Then(/^I should see the title "([^"]*)"$/, function (arg1, callback) {
+            //TODO IMPLEMENT: currently does nothing
             this.client.call(callback);
         });
 
