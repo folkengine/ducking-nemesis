@@ -1,5 +1,11 @@
-
 (function () {
+
+    //use for passing a callback into non-terminal steps of chained calls
+    var errorCallback = function (err) {
+        if (err) {
+            callback(err)
+        }
+    };
 
     'use strict';
 
@@ -43,10 +49,11 @@
         // Registration
 
         this.When(/^I register for the first time$/, function (callback) {
-            this.client.setValue('#login-email', 'test123@foo.com')
-                .setValue('#login-password', 'yadayadayaday')
-                .click('#login-buttons-password')
-                .call(callback);
+            this.client
+                .setValue('#login-email', 'test123@foo.com', errorCallback)
+                .setValue('#login-password', 'yadayadayaday', errorCallback)
+                .click('#login-buttons-password', errorCallback)
+                .call(callback)
         });
 
         this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
