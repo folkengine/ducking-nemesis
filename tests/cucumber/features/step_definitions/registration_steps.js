@@ -1,12 +1,5 @@
 (function () {
 
-    //use for passing a callback into non-terminal steps of chained calls
-    var errorCallback = function (err) {
-        if (err) {
-            callback(err)
-        }
-    };
-
     'use strict';
 
     module.exports = function () {
@@ -49,6 +42,13 @@
         // Registration
 
         this.When(/^I register for the first time$/, function (callback) {
+
+            var errorCallback = function (err) {
+                if (err) {
+                    callback(err)
+                }
+            };
+
             this.client
                 .setValue('#login-email', 'test123@foo.com', errorCallback)
                 .setValue('#login-password', 'yadayadayaday', errorCallback)
