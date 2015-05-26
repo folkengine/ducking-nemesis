@@ -66,4 +66,13 @@ describe('SkillService', function() {
     var docFromColl = Skills.findOne(selector);
     expect(docFromColl).not.toBeFalsy();
   });
+
+  it("addSkill should not put duplicate skills in the collection", function() {
+    var skill = "DRY code";
+    var selector = {email: "somebody@pillar.org", sortKey: skillService.generateSortKey(skill)};
+    skillService.addSkill(selector.email, skill, true);
+    skillService.addSkill(selector.email, skill, true);
+    var skillsArray =  Skills.find(selector).fetch();
+    expect(skillsArray.length).toEqual(1);
+  })
 });
