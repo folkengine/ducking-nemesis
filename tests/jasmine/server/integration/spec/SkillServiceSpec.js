@@ -37,9 +37,11 @@ describe('SkillService', function() {
     describe('for a user with skills', function() {
       it('should return 1 skill for a user with one skill', function() {
 
-        console.log(Skills);
+        skills = skillService.getSkills('1_skill@example.com');
 
-        expect(skillService.getSkills('1_skill@example.com').length).toEqual(1);
+        console.log(">>>>>>>>>>>>" + skills);
+
+        expect(skills.length).toEqual(1);
       })
     });
 
