@@ -41,7 +41,7 @@
         //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
         // Registration
 
-        this.When(/^I register for the first time$/, function (callback) {
+        this.When(/^I enter my registration information$/, function (callback) {
 
             var errorCallback = function (err) {
                 if (err) {
@@ -50,15 +50,61 @@
             };
 
             this.client
-                .setValue('#login-email', 'test123@foo.com', errorCallback)
+                .setValue('#login-email', 'test12ss@foo.com', errorCallback)
                 .setValue('#login-password', 'yadayadayaday', errorCallback)
-                .click('#login-buttons-password', errorCallback)
                 .call(callback)
         });
 
-        this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
-            this.client.getHTML("#protected", false, callback);
+        this.When(/^I register for the first time$/, function (callback) {
+
+            //var errorCallback = function (err) {
+            //    if (err) {
+            //        callback(err)
+            //    }
+            //};
+            //
+            //this.client
+            //    .waitForExist('#login-buttons-password')
+            //    .waitForVisible('#login-buttons-password')
+            //    .setValue('#login-email', 'test123@foo.com', errorCallback)
+            //    .setValue('#login-password', 'yadayadayaday', errorCallback)
+            //
+            //    /// .submitForm('#login-buttons-password')
+            //    // .deviceKeyEvent(13, errorCallback)
+            //    // .submit('#login-password')
+            //    .click('#login-buttons-password', errorCallback)
+            //    .call(callback)
+
+            // 1. create a user
+            var userData = {email: 'test12s3@foo.com', password: 'abc123456'};
+            _createUser(userData, function(createdUser) {
+
+                // 2. Login with that user
+                browser.executeAsync(function (user, done) {
+                    // this code is run in the browser
+                    Meteor.loginWithPassword(user.email, user.password, done); // done is what tells the async function to finish
+                }, createdUser)
+                    . // createdUser is passed in as a param to executeAsync
+                    // 3. Wait for the UI to react
+                    waitForExist('.logged-in-indicator', true).
+                    call(callback);
+
+            });
+
+            function _createUser(user, callback) {
+
+                console.log("_createUser(" + user)
+
+                global.ddp.call('fixtures/user/create', user, function () {
+                    callback(user);
+                });
+            }
         });
 
+        this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
+            this.client.waitForExist('#protected')
+                .waitForVisible('#protected').getHTML("#protected", false, callback);
+        });
     };
 })();
+

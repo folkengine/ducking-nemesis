@@ -19,6 +19,8 @@ Feature: User Identification
     When I navigate to the "index"
     And I click the ".login-link-text" link
     And I click the "#signup-link" link
+    # And I enter my registration information
+    # And I click the "#login-buttons-password" link
     And I register for the first time
     Then I should be able to see content that requires Authentication
 
