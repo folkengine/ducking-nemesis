@@ -28,9 +28,7 @@ if (Meteor.isServer) {
 
       console.log('fixtures/user/create')
 
-      return Accounts.createUser(user).on('unhandledRejection', function (err) {
-        //  throw err;
-      });
+      return Accounts.createUser(user);
     }
   });
 }
