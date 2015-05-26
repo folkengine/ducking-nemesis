@@ -38,42 +38,7 @@
             }).call(callback);
         });
 
-        //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-        // Registration
-
-        this.When(/^I enter my registration information$/, function (callback) {
-
-            var errorCallback = function (err) {
-                if (err) {
-                    callback(err)
-                }
-            };
-
-            this.client
-                .setValue('#login-email', 'test12ss@foo.com', errorCallback)
-                .setValue('#login-password', 'yadayadayaday', errorCallback)
-                .call(callback)
-        });
-
         this.When(/^I register for the first time$/, function (callback) {
-
-            //var errorCallback = function (err) {
-            //    if (err) {
-            //        callback(err)
-            //    }
-            //};
-            //
-            //this.client
-            //    .waitForExist('#login-buttons-password')
-            //    .waitForVisible('#login-buttons-password')
-            //    .setValue('#login-email', 'test123@foo.com', errorCallback)
-            //    .setValue('#login-password', 'yadayadayaday', errorCallback)
-            //
-            //    /// .submitForm('#login-buttons-password')
-            //    // .deviceKeyEvent(13, errorCallback)
-            //    // .submit('#login-password')
-            //    .click('#login-buttons-password', errorCallback)
-            //    .call(callback)
 
             // 1. create a user
             var userData = {email: 'test12s3@foo.com', password: 'abc123456'};
