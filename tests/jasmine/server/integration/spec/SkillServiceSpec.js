@@ -18,10 +18,6 @@
 describe('SkillService', function() {
   var skillService;
 
-  beforeAll(function() {
-    Skills.insert({email: '1_skill@example.com', skillName: 'thumb-twiddling', isMentorable: true})
-  });
-
   beforeEach(function() {
     skillService = new SkillService();
   });
@@ -34,14 +30,16 @@ describe('SkillService', function() {
       });
     });
 
-    describe('for a user with skills', function() {
-      it('should return 1 skill for a user with one skill', function() {
+    describe('for a user with one skill', function() {
 
+
+
+      it('getSkills() should return one skill', function() {
+        var email = '1_skill@example.com';
+        skillService.addSkill(email, "UX", true);
         skills = skillService.getSkills('1_skill@example.com');
-
-        console.log(">>>>>>>>>>>>" + skills);
-
         expect(skills.length).toEqual(1);
+        expect(skills[0].skill).toEqual("UX");
       })
     });
 
