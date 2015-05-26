@@ -2,12 +2,21 @@
 
   'use strict';
 
-  // Process for new user:
-  // Make sure that
+  //console.log("my_fixture.js function invoked")
 
   Meteor.methods({
     'reset' : function() {
       console.log('reset()')
+      Meteor.users.remove({})
+
+      Accounts.createUser({
+        username: "testUser",
+        email: "test@test.com",
+        password: "TEST_123",
+        profile: {
+          name: "Test User"
+        }
+      });
     }
   });
 
