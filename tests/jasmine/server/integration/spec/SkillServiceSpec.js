@@ -25,24 +25,18 @@ describe('SkillService', function() {
   describe('I should be able to read the skills for a specific user', function() {
 
     describe('for a user with no skills', function() {
-      xit('should return nothing without error', function() {
+      it('should return nothing without error', function() {
         expect(skillService.getSkills('0_skill@example.com')).toEqual([]);
       });
     });
 
-    describe('for a user with one skill', function() {
-
-
-
-      it('getSkills() should return one skill', function() {
-        var email = '1_skill@example.com';
-        skillService.addSkill(email, "UX", true);
-        skills = skillService.getSkills('1_skill@example.com');
-        expect(skills.length).toEqual(1);
-        expect(skills[0].skill).toEqual("UX");
-      })
-    });
-
+    it('for a user with one skill getSkills() should return one skill', function () {
+      var email = '1_skill@example.com';
+      skillService.addSkill(email, "UX", true);
+      skills = skillService.getSkills('1_skill@example.com');
+      expect(skills.length).toEqual(1);
+      expect(skills[0].skill).toEqual("UX");
+    })
   });
 
   it("hasSkill() should return false if a matching skill is not present in the collection", function() {
@@ -56,7 +50,7 @@ describe('SkillService', function() {
     expect(id).not.toBeFalsy();
     var has = skillService.hasSkill("dude@gap.co", "Gradle");
     expect(has).toBe(true);
-  })
+  });
 
   it("addSkill() should put another skill document in the skills collection", function () {
     var selector = {email: "user@ducking-nemesis.org", sortKey: "literate programming"};
