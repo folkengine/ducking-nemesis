@@ -59,4 +59,11 @@ describe('SkillService', function() {
     var has = skillService.hasSkill("dude@gap.co", "Gradle");
     expect(has).toBe(true);
   })
+
+  it("addSkill() should put another skill document in the skills collection", function () {
+    var selector = {email: "user@ducking-nemesis.org", sortKey: "literate programming"};
+    skillService.addSkill(selector.email, selector.sortKey, false);
+    var docFromColl = Skills.findOne(selector);
+    expect(docFromColl).not.toBeFalsy();
+  });
 });
