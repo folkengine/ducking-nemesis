@@ -20,12 +20,4 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-
-  // Fixture package - see here http://goo.gl/1CvTTa
-  Meteor.methods({
-    // resetTestingEnvironment: resetTestingEnvironment,
-    'fixtures/user/create': function(user) {
-      return Accounts.createUser(user);
-    }
-  });
 }

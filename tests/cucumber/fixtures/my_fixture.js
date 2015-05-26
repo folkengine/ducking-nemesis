@@ -19,6 +19,10 @@
           name: "Test User"
         }
       });
+    },
+
+    'fixtures/user/create': function(user) {
+      return Accounts.createUser(user);
     }
   });
 
