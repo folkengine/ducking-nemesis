@@ -47,7 +47,16 @@ describe('SkillService', function() {
 
   });
 
+  it("hasSkill() should return false if a matching skill is not present in the collection", function() {
+    var booleanValue = skillService.hasSkill("someone@somesite.net", "Bikeshedding");
+    expect(booleanValue).toBe(false);
+  });
 
-
-
+  it("hasSkill() should return true if a matching skill is present in the collection", function() {
+    var skillDoc = skillService.createSkillDoc("dude@gap.co", "Gradle", true);
+    var id = Skills.insert(skillDoc);
+    expect(id).not.toBeFalsy();
+    var has = skillService.hasSkill("dude@gap.co", "Gradle");
+    expect(has).toBe(true);
+  })
 });
