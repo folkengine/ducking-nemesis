@@ -24,10 +24,8 @@ describe('SkillService', function() {
 
   describe('I should be able to read the skills for a specific user', function() {
 
-    describe('for a user with no skills', function() {
-      it('should return nothing without error', function() {
-        expect(skillService.getSkills('0_skill@example.com')).toEqual([]);
-      });
+    it('for a user with no skills getSkills() should return an empty array', function () {
+      expect(skillService.getSkills('0_skill@example.com')).toEqual([]);
     });
 
     it('for a user with one skill getSkills() should return one skill', function () {
