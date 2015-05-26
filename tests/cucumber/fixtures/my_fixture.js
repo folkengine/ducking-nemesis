@@ -6,8 +6,13 @@
 
   Meteor.methods({
     'reset' : function() {
-      console.log('reset()')
-      Meteor.users.remove({})
+      console.log('reset()');
+
+      if(Meteor.userId()) {
+        Meteor.logout();
+      }
+
+      Meteor.users.remove({});
 
       Accounts.createUser({
         username: "testUser",

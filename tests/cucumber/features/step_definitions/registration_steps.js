@@ -66,6 +66,13 @@
             }
         });
 
+        this.When(/^I login with my username and password$/, function (callback) {
+            browser.executeAsync(function(obj, done){
+                Meteor.loginWithPassword("test@test.com", "TEST_123", done);
+
+            }, {}, callback);
+        });
+
         this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
             this.client.waitForExist('#protected')
                 .waitForVisible('#protected').getHTML("#protected", false, callback);
