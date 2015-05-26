@@ -57,9 +57,6 @@
             });
 
             function _createUser(user, callback) {
-
-                console.log("_createUser(" + user)
-
                 global.ddp.call('fixtures/user/create', user, function () {
                     callback(user);
                 });

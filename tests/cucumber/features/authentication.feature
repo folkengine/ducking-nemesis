@@ -17,8 +17,6 @@ Feature: User Identification
 
   Scenario: Authenticating New User
     When I navigate to the "index"
-    And I click the ".login-link-text" link
-    And I click the "#signup-link" link
     And I register for the first time
     Then I should be able to see content that requires Authentication
 

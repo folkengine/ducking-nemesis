@@ -25,9 +25,6 @@ if (Meteor.isServer) {
   Meteor.methods({
     // resetTestingEnvironment: resetTestingEnvironment,
     'fixtures/user/create': function(user) {
-
-      console.log('fixtures/user/create')
-
       return Accounts.createUser(user);
     }
   });

@@ -2,11 +2,8 @@
 
   'use strict';
 
-  //console.log("my_fixture.js function invoked")
-
   Meteor.methods({
     'reset' : function() {
-      console.log('reset()');
 
       if(Meteor.userId()) {
         Meteor.logout();
