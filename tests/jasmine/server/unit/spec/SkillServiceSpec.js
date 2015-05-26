@@ -18,6 +18,10 @@
 describe('SkillService', function() {
   var skillService;
 
+  beforeAll(function() {
+    Skills.insert({email: '1_skill@example.com', skillName: 'thumb-twiddling', isMentorable: true})
+  });
+
   beforeEach(function() {
     skillService = new SkillService();
   });
@@ -25,55 +29,23 @@ describe('SkillService', function() {
   describe('I should be able to read the skills for a specific user', function() {
 
     describe('for a user with no skills', function() {
-      it('should return nothing without errors', function() {
-        player.play(song);
-        expect(player.currentlyPlayingSong).toEqual(song);
-
-
-        expect(player).toBePlaying(song);
+      xit('should return nothing without error', function() {
+        expect(skillService.getSkills('0_skill@example.com')).toEqual([]);
       });
-
-
     });
 
+    describe('for a user with skills', function() {
+      it('should return 1 skill for a user with one skill', function() {
+
+        console.log(Skills);
+
+        expect(skillService.getSkills('1_skill@example.com').length).toEqual(1);
+      })
+    });
 
   });
 
-  it('should be able to play a Song', function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
 
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
-  });
 
-  describe('when song has been paused', function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
 
-    it('should indicate that the song is currently paused', function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it('should be possible to resume', function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
-  });
-
-  // demonstrates use of spies to intercept and test method calls
-  it('tells the current song if the user has made it a favorite', function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  });
 });
