@@ -1,6 +1,5 @@
 @dev
 Feature: Display and Entry of Skills
-  # Enter feature description here
 
   Background:
     Given I have skills in the database
@@ -15,7 +14,7 @@ Feature: Display and Entry of Skills
     And I have one skill in the database
     Then I should see a list with my one skill
 
-#  Scenario: I have multiple skills in the database
-#    When I navigate to the "index"
-#    And I have multiple skills in the database
-#    Then I should see a list with all of my skills
+  Scenario: I have multiple skills in the database
+    When I navigate to the "index"
+    And I have multiple skills in the database
+    Then I should see a list with all of my skills

@@ -36,8 +36,7 @@
         });
 
         this.Then(/^I should see a list with all of my skills$/, function (callback) {
-            // TODO: implement
-            callback();
+            this.client.waitForVisible("#skills-list", 500, false, callback);
         });
     }
 

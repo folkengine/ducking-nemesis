@@ -31,14 +31,14 @@
 
         'fixtures/skills': function () {
 
-            Meteor.users.remove({});
             function createSkillsTestAccount(email) {
                 Accounts.createUser({
                     email: email,
-                    password: 'password123',
+                    password: 'password123'
                 });
             }
 
+            Meteor.users.remove({});
             createSkillsTestAccount(noSkill);
             createSkillsTestAccount(oneSkill);
             createSkillsTestAccount(multipleSkills);
