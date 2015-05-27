@@ -16,6 +16,15 @@ Template.skills.helpers({
         var skillService = new SkillService();
         return skillService.getSkills(getCurrentUserEmail());
     }
+
+});
+
+UI.body.events({
+    'click .remove-skill-link': function (event, ui) {
+        event.preventDefault();
+        var skillId = event.currentTarget.dataset.id;
+        Skills.remove({_id: skillId})
+    }
 });
 
 Template.skillEntry.events({

@@ -1,7 +1,14 @@
+function getCurrentUserEmail() {
+    var currentUser = Meteor.user();
+    var emailsArray = currentUser.emails;
+    var firstEmail = emailsArray[0];
+    return firstEmail.address;
+}
+
+
 Meteor.methods({
     'PutSkill': function (skill) {
         var skillService = new SkillService();
-        var email = Meteor.user().emails[0].address;
-        skillService.putSkill(email, skill, false);
+        skillService.putSkill(getCurrentUserEmail(), skill, false);
     }
 });
