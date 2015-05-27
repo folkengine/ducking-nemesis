@@ -25,3 +25,4 @@ Feature: Display and Entry of Skills
     And I type in a skill name
     And I click on submit button
     Then I should see my skill in the list
+    And The text of the skill input should be cleared

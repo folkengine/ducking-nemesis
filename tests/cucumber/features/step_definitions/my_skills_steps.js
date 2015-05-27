@@ -53,6 +53,10 @@
                 .getHTML("li", callback);
         });
 
+        this.Then(/^The text of the skill input should be cleared$/, function (callback) {
+            this.client
+                .getValue('#add-skill-input').should.become('').and.notify(callback);
+        });
     }
 
 })();
