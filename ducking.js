@@ -31,7 +31,19 @@ if (Meteor.isClient) {
             var skillsArray = skillService.getSkills(currentUserEmail);
             return skillsArray;
         }
-    })
+    });
+
+    Template.skillEntry.events({
+       'click button#add-skill-button': function(evt) {
+           evt.preventDefault();
+           var skill = Template.instance().$('#add-skill-input').val();
+           console.log("val is " + skill); //TODO REMOVE
+           var currentUser = Meteor.user();
+           var currentUserEmail = currentUser.emails[0].address;
+           var skillService = new SkillService();
+           skillService.addSkill(currentUserEmail, skill, false);
+       }
+    });
 }
 
 if (Meteor.isServer) {

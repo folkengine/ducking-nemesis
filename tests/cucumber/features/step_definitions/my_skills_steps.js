@@ -38,6 +38,21 @@
         this.Then(/^I should see a list with all of my skills$/, function (callback) {
             this.client.waitForVisible("#skills-list", 500, false, callback);
         });
+
+        this.When(/^I type in a skill name$/, function (callback) {
+            this.client.setValue('#add-skill-input', 'Hello World', callback);
+        });
+
+        this.When(/^I click on submit button$/, function (callback) {
+            this.client.click("#add-skill-button", callback);
+        });
+
+        this.Then(/^I should see my skill in the list$/, function (callback) {
+            this.client
+                .waitForVisible("#skills-list", 500, false)
+                .getHTML("li", callback);
+        });
+
     }
 
 })();

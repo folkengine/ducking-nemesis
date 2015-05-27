@@ -29,6 +29,7 @@
 <template name="skills">
     {{#if hasSkills}}
         <div id="skills-list">
+            <label>Skills:</label>
             <ul>
                 {{#each getSkills}}
                     <li>{{skill}}</li>
@@ -36,6 +37,16 @@
             </ul>
         </div>
     {{else}}
-        <div id="no-skills">You have you skills in the database.</div>
+        <div id="no-skills">You have you no skills in the database.</div>
     {{/if}}
+    {{> skillEntry}}
+</template>
+
+<template name="skillEntry">
+    <form id="skill-entry-form">
+        <fieldset>
+            Add Skill: <input id="add-skill-input" type="text" value=""/>
+            <button id="add-skill-button">Add</button>
+        </fieldset>
+    </form>
 </template>
