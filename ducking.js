@@ -1,48 +1,32 @@
 if (Meteor.isClient) {
-    // counter starts at 0
-    Session.setDefault('counter', 0);
 
-    Template.hello.helpers({
-        counter: function () {
-            return Session.get('counter');
-        }
-    });
-
-    Template.hello.events({
-        'click button': function () {
-            // increment the counter when button is clicked
-            Session.set('counter', Session.get('counter') + 1);
-        }
-    });
+    function getCurrentUserEmail() {
+        var currentUser = Meteor.user();
+        var emailsArray = currentUser.emails;
+        var firstEmail = emailsArray[0];
+        return firstEmail.address;
+    }
 
     Template.skills.helpers({
         hasSkills: function () {
-            var currentUser = Meteor.user();
-            var currentUserEmail = currentUser.emails[0].address;
             var skillService = new SkillService();
-            var skillsArray = skillService.getSkills(currentUserEmail);
+            var skillsArray = skillService.getSkills(getCurrentUserEmail());
             return skillsArray.length > 0;
         },
 
         getSkills: function () {
-            var currentUser = Meteor.user();
-            var currentUserEmail = currentUser.emails[0].address;
             var skillService = new SkillService();
-            var skillsArray = skillService.getSkills(currentUserEmail);
-            return skillsArray;
+            return skillService.getSkills(getCurrentUserEmail());
         }
     });
 
     Template.skillEntry.events({
-       'click button#add-skill-button': function(evt) {
-           evt.preventDefault();
-           var skill = Template.instance().$('#add-skill-input').val();
-           console.log("val is " + skill); //TODO REMOVE
-           var currentUser = Meteor.user();
-           var currentUserEmail = currentUser.emails[0].address;
-           var skillService = new SkillService();
-           skillService.addSkill(currentUserEmail, skill, false);
-       }
+        'click button#add-skill-button': function (evt) {
+            evt.preventDefault();
+            var skill = Template.instance().$('#add-skill-input').val();
+            var skillService = new SkillService();
+            skillService.addSkill(getCurrentUserEmail(), skill, false);
+        }
     });
 }
 
