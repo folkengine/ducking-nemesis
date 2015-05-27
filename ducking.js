@@ -16,7 +16,28 @@ if (Meteor.isClient) {
   });
 
   Template.skills.helpers({
-    hasSkills: false
+    hasSkills: function () {
+      var skillsCollection  = Skills.find({}).fetch(); //TODO REMOVE
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > skills collection: %o", skillsCollection); //TODO remove
+      var currentUser = Meteor.user();
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > current user: %o", currentUser); //todo remove
+      var currentUserEmail = Meteor.user().emails[0].address;
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > current user email: %o", currentUserEmail); //todo remove
+      var skillService = new SkillService();
+      var skillsArray = skillService.getSkills(currentUserEmail);
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > skills array from service: %o", skillsArray); //todo remove
+      return skillsArray.length > 0;
+    },
+
+    getSkills: function() {
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > skills getSkills invoked.") //todo remove
+      var currentUser = Meteor.user();
+      var currentUserEmail = Meteor.user().emails[0].address;
+      var skillService = new SkillService();
+      var skillsArray = skillService.getSkills(currentUserEmail);
+      console.log("> > > > > > > > > > > > > > > > > > > > > > > > skills array in getSkills: %o", skillsArray); //todo remove
+      return skillsArray;
+    }
   })
 }
 

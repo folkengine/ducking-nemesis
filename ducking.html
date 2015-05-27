@@ -28,6 +28,13 @@
 
 <template name="skills">
     {{#if hasSkills}}
+        <div id="skills-list">
+            <ul>
+                {{#each getSkills}}
+                    <li>{{skill}}</li>
+                {{/each}}
+            </ul>
+        </div>
     {{else}}
         <div id="no-skills">You have you skills in the database.</div>
     {{/if}}
