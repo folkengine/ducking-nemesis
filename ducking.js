@@ -14,6 +14,10 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
     }
   });
+
+  Template.skills.helpers({
+    hasSkills: false
+  })
 }
 
 if (Meteor.isServer) {

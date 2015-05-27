@@ -15,7 +15,7 @@
             this.server.call('fixtures/skills', "test@test.com", callback);
         });
 
-        this.Then(/^I should see a message saying that I have no skills in the database$/, function (callback) {
+        this.Then(/^I should see a message saying that I have zero skills in the database$/, function (callback) {
             this.client.waitForVisible("#no-skills", 500, false, callback);
         });
 

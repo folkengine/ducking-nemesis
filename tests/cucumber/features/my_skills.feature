@@ -8,7 +8,7 @@ Feature: Display and Entry of Skills
   Scenario: I have no skills in the database
     When I navigate to the "index"
     And I have no skills in the database
-    Then I should see a message saying that I have no skills in the database
+    Then I should see a message saying that I have zero skills in the database
 
   Scenario: I have one skill in the database
     When I navigate to the "index"
