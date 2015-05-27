@@ -34,15 +34,15 @@ describe('SkillService', function() {
   });
 
   it("putSkill() should put another skill document in the skills collection", function () {
-    var selector = {email: "user@ducking-nemesis.org", sortKey: "literate programming"};
-    skillService.putSkill(selector.email, selector.sortKey, false);
+    var selector = {email: "user@ducking-nemesis.org", key: "literate programming"};
+    skillService.putSkill(selector.email, selector.key, false);
     var docFromColl = Skills.findOne(selector);
     expect(docFromColl).not.toBeFalsy();
   });
 
   it("putSkill should not put duplicate skills in the collection", function() {
     var skill = "DRY code";
-    var selector = {email: "somebody@pillar.org", sortKey: skillService.generateSortKey(skill)};
+    var selector = {email: "somebody@pillar.org", key: skillService.generateKey(skill)};
     skillService.putSkill(selector.email, skill, true);
     skillService.putSkill(selector.email, skill, true);
     var skillsArray =  Skills.find(selector).fetch();
