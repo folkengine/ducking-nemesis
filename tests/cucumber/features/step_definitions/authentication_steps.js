@@ -71,8 +71,7 @@
         });
 
         this.Then(/^I should be able to see content that requires Authentication$/, function (callback) {
-            this.client.waitForExist('#protected')
-                .waitForVisible('#protected').getHTML("#protected", false, callback);
+            this.client.waitForExist('#protected').getHTML("#protected", false, callback);
         });
     };
 })();
