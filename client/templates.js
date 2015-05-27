@@ -21,10 +21,13 @@ Template.skills.helpers({
 Template.skillEntry.events({
     'click button#add-skill-button': function (evt) {
         evt.preventDefault();
-        var skill = Template.instance().$('#add-skill-input').val();
+        var template = Template.instance();
+        var skill = template.$('#add-skill-input').val();
         Meteor.call('PutSkill', getCurrentUserEmail(), skill, function (err) {
             if (err) {
                 alert('Error: ' + err);
+            } else {
+                template.$('#add-skill-input').val('');
             }
         });
     }
