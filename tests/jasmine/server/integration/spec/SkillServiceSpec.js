@@ -51,6 +51,7 @@ describe('SkillService', function() {
 
   it("putSkill should update display name and isMentorable", function() {
       var email = 'somebody@somesite.gov';
+      Skills.remove({email: email})
       skillService.putSkill(email, 'statecraft', false);
       skillService.putSkill(email, 'StateCraft', true);
       var skillsArray = skillService.getSkills(email);
@@ -59,5 +60,35 @@ describe('SkillService', function() {
       expect(skillDisplayName).toEqual('StateCraft');
       var skillIsMentorable = skillDoc.isMentorable;
       expect(skillIsMentorable).toBe(true);
-  })
+  });
+
+  it("getSkills should return a list sorted by downcased skill name", function () {
+    var email = 'somebody@someothersite.io';
+    Skills.remove({email: email});
+    skillService.putSkill(email, 'erlang', false);
+    skillService.putSkill(email, 'Clojure', false);
+    skillService.putSkill(email, 'Aspect Oriented Programming', true);
+    skillService.putSkill(email, 'Go', true);
+    skillService.putSkill(email, 'Behavior Driven Development', false);
+    skillService.putSkill(email, 'Haskell', true);
+    skillService.putSkill(email, 'data science', true);
+    skillService.putSkill(email, 'F#', false);
+
+    var skillsArray = skillService.getSkills(email);
+
+    function expectation(index, expectedSkill) {
+      var skillDoc = skillsArray[index];
+      var actual = skillDoc.skill;
+      expect(actual).toEqual(expectedSkill);
+    }
+
+    expectation(0, 'Aspect Oriented Programming');
+    expectation(1, 'Behavior Driven Development');
+    expectation(2, 'Clojure');
+    expectation(3, 'data science');
+    expectation(4, 'erlang');
+    expectation(5, 'F#');
+    expectation(6, 'Go');
+    expectation(7, 'Haskell');
+  });
 });
