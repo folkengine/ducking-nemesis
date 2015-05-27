@@ -1,20 +1,3 @@
-/* globals Player: false, Song: false */
-
-// Given a specific user show me all of their skills
-
-// Boundary conditions
-// - no skills 0_skill@example.com
-// - 1 skill   1_skill@example.com
-// - 2 skills  2_skill@example.com
-// - Filter on wantMentoring mixed_skill@example.com
-
-// Given a specific user I want to add a skill
-//
-// Boundary conditions
-// - Has no skills
-// - has skills
-// - with mentoring
-// - wihtout mentoring
 describe('SkillService', function() {
   var skillService;
 
@@ -30,7 +13,7 @@ describe('SkillService', function() {
 
     it('for a user with one skill getSkills() should return one skill', function () {
       var email = '1_skill@example.com';
-      skillService.addSkill(email, "UX", true);
+      skillService.putSkill(email, "UX", true);
       skills = skillService.getSkills('1_skill@example.com');
       expect(skills.length).toEqual(1);
       expect(skills[0].skill).toEqual("UX");
@@ -50,19 +33,31 @@ describe('SkillService', function() {
     expect(has).toBe(true);
   });
 
-  it("addSkill() should put another skill document in the skills collection", function () {
+  it("putSkill() should put another skill document in the skills collection", function () {
     var selector = {email: "user@ducking-nemesis.org", sortKey: "literate programming"};
-    skillService.addSkill(selector.email, selector.sortKey, false);
+    skillService.putSkill(selector.email, selector.sortKey, false);
     var docFromColl = Skills.findOne(selector);
     expect(docFromColl).not.toBeFalsy();
   });
 
-  it("addSkill should not put duplicate skills in the collection", function() {
+  it("putSkill should not put duplicate skills in the collection", function() {
     var skill = "DRY code";
     var selector = {email: "somebody@pillar.org", sortKey: skillService.generateSortKey(skill)};
-    skillService.addSkill(selector.email, skill, true);
-    skillService.addSkill(selector.email, skill, true);
+    skillService.putSkill(selector.email, skill, true);
+    skillService.putSkill(selector.email, skill, true);
     var skillsArray =  Skills.find(selector).fetch();
     expect(skillsArray.length).toEqual(1);
+  });
+
+  it("putSkill should update display name and isMentorable", function() {
+      var email = 'somebody@somesite.gov';
+      skillService.putSkill(email, 'statecraft', false);
+      skillService.putSkill(email, 'StateCraft', true);
+      var skillsArray = skillService.getSkills(email);
+      var skillDoc = skillsArray[0];
+      var skillDisplayName = skillDoc.skill;
+      expect(skillDisplayName).toEqual('StateCraft');
+      var skillIsMentorable = skillDoc.isMentorable;
+      expect(skillIsMentorable).toBe(true);
   })
 });
