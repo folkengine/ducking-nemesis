@@ -23,7 +23,7 @@ Template.skillEntry.events({
         evt.preventDefault();
         var template = Template.instance();
         var skill = template.$('#add-skill-input').val();
-        Meteor.call('PutSkill', getCurrentUserEmail(), skill, function (err) {
+        Meteor.call('PutSkill', skill, function (err) {
             if (err) {
                 alert('Error: ' + err);
             } else {
