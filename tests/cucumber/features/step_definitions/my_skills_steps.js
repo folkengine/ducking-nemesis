@@ -7,9 +7,7 @@
         this.Given(/^I am an authenticated user$/, function (callback) {
             browser.executeAsync(function (obj, done) {
                 Meteor.loginWithPassword("test@test.com", "TEST_123", done);
-            }, {}, function (err) {
-                callback(err);
-            });
+            }, {}, callback);
         });
 
         this.When(/^I have no skills in the database$/, function (callback) {
@@ -27,8 +25,7 @@
         });
 
         this.Then(/^I should see a list with my one skill$/, function (callback) {
-            // Write code here that turns the phrase above into concrete actions
-            callback();
+            this.client.waitForVisible("#skills-list", 500, false, callback);
         });
 
         this.When(/^I have multiple skills in the database$/, function (callback) {
@@ -37,7 +34,7 @@
         });
 
         this.Then(/^I should see a list with all of my skills$/, function (callback) {
-            // Write code here that turns the phrase above into concrete actions
+            // TODO: implement
             callback();
         });
     }

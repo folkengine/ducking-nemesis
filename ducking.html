@@ -1,26 +1,31 @@
 <head>
-  <title>ducking</title>
+    <title>ducking</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+<h1>Welcome to Meteor!</h1>
 
-  {{> login}}
-  {{> protected}}
+{{> login}}
+{{> protected}}
+
 </body>
 
 <template name="hello">
-  <button>ClickMe</button>
-  <p>You've pressed the button {{counter}} times.</p>
+    <button>ClickMe</button>
+    <p>You've pressed the button {{counter}} times.</p>
 </template>
 
 <template name="login">
-  {{> loginButtons}}
+    {{> loginButtons}}
 </template>
 
 <template name="protected">
-  {{#if currentUser}}
-    <div id="protected">Protected Content.</div>
-  {{/if}}
+    {{#if currentUser}}
+        <div id="protected">Protected Content.</div>
+        {{> skills}}
+    {{/if}}
 </template>
 
+<template name="skills">
+    <div id="no-skills">You have you skills in the database.</div>
+</template>
