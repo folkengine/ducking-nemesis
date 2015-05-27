@@ -45,9 +45,9 @@
 
             var skillService = new SkillService();
             Skills.remove({});
-            skillService.addSkill(oneSkill, "PHP", true);
-            skillService.addSkill(multipleSkills, "Python", true);
-            skillService.addSkill(multipleSkills, "Perl", false);
+            skillService.putSkill(oneSkill, "php", true);
+            skillService.putSkill(multipleSkills, "Python", true);
+            skillService.putSkill(multipleSkills, "Perl", false);
         }
 
     });

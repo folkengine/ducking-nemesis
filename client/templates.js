@@ -22,7 +22,10 @@ Template.skillEntry.events({
     'click button#add-skill-button': function (evt) {
         evt.preventDefault();
         var skill = Template.instance().$('#add-skill-input').val();
-        var skillService = new SkillService();
-        skillService.addSkill(getCurrentUserEmail(), skill, false);
+        Meteor.call('PutSkill', getCurrentUserEmail(), skill, function (err) {
+            if (err) {
+                alert('Error: ' + err);
+            }
+        });
     }
 });
