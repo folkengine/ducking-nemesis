@@ -57,6 +57,10 @@
             this.client
                 .getValue('#add-skill-input').should.become('').and.notify(callback);
         });
+
+        this.When(/^I click on the X to delete the skill$/, function (callback) {
+            this.client.click('.remove-skill-link', callback);
+        });
     }
 
 })();

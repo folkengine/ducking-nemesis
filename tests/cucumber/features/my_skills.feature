@@ -26,3 +26,9 @@ Feature: Display and Entry of Skills
     And I click on submit button
     Then I should see my skill in the list
     And The text of the skill input should be cleared
+
+  Scenario: Removing a skill
+    When I navigate to the "index"
+    And I have one skill in the database
+    And I click on the X to delete the skill
+    Then I should see a message saying that I have zero skills in the database
