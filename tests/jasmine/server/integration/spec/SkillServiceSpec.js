@@ -51,7 +51,7 @@ describe('SkillService', function() {
 
   it("putSkill should update display name and isMentorable", function() {
       var email = 'somebody@somesite.gov';
-      Skills.remove({email: email})
+      Skills.remove({email: email});
       skillService.putSkill(email, 'statecraft', false);
       skillService.putSkill(email, 'StateCraft', true);
       var skillsArray = skillService.getSkills(email);
@@ -91,4 +91,15 @@ describe('SkillService', function() {
     expectation(6, 'Go');
     expectation(7, 'Haskell');
   });
+
+  it("removeSkill should remove a skill from the collection", function() {
+    var email = 'brogrammer@somesite.org';
+    Skills.remove({email: email});
+    skillService.putSkill(email, 'Go', true);
+    skillService.putSkill(email, 'Haskell', true);
+    skillService.removeSkill(email, 'Go');
+    var skillsArray = skillService.getSkills(email);
+    expect(skillsArray.length).toEqual(1);
+    expect(skillsArray[0].skill).toEqual('Haskell');
+  })
 });
