@@ -1,6 +1,3 @@
-Skills = new Mongo.Collection('skills');
-// Skills._ensureIndex( { email: 1, skillName: 1 }, { unique: true } )
-
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
