@@ -5,6 +5,7 @@
 <body>
 <h1>Welcome to Meteor!</h1>
 
+{{> search}}
 {{> login}}
 {{> protected}}
 
@@ -45,6 +46,15 @@
         <fieldset>
             Add Skill: <input id="add-skill-input" type="text" value=""/>
             <button id="add-skill-button">Add</button>
+        </fieldset>
+    </form>
+</template>
+
+<template name="search">
+    <form id="skill-search-form">
+        <fieldset>
+            <input id="search-skill-input" type="text" value="" />
+            <button id="search-skill-button">Search</button>
         </fieldset>
     </form>
 </template>

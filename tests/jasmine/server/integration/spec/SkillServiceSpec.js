@@ -1,20 +1,55 @@
 describe('SkillService', function() {
   var skillService;
+  var email_skill_0 = 'skill_0@example.com';
+  var email_skill_1 = 'skill_1@example.com';
+  var email_skill_2 = 'skill_2@example.com';
+  var email_skill_uy = 'skill_uy@example.com';
+
+
+  beforeAll(function() {
+    skillService = new SkillService();
+    skillService.putSkill(email_skill_1, "UX", true);
+    skillService.putSkill(email_skill_2, "UY", true);
+    skillService.putSkill(email_skill_2, "UZ", true);
+    skillService.putSkill(email_skill_uy, "UY", true);
+  })
 
   beforeEach(function() {
-    skillService = new SkillService();
+
   });
+
+  describe('I should be able to search for Users with specific skills', function() {
+    //it('for a skill with no user', function() {
+    //  users = skillService.getUsersBySkill('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
+    //  expect(users.length).toBe(0);
+    //});
+
+    it('for a skill with one user', function() {
+      users = skillService.getUsersBySkill('UX');
+      expect(users.indexOf(email_skill_1)).not.toEqual(-1);
+    });
+
+    //it('for a skill with two users', function() {
+    //  users = skillService.getUserBySkill('UY');
+    //  expect(users.indexOf(email_skill_2)).not.toEqual(-1);
+    //  expect(users.indexOf(email_skill_uy)).not.toEqual(-1);
+    //});
+    //
+    //it('it does not return a user that I know does not have the skill', function() {
+    //  users = skillService.getUserBySkill('UX');
+    //  expect(users.find(email_skill_0)).toBe(false);
+    //});
+
+  })
 
   describe('I should be able to read the skills for a specific user', function() {
 
     it('for a user with no skills getSkills() should return an empty array', function () {
-      expect(skillService.getSkills('0_skill@example.com')).toEqual([]);
+      expect(skillService.getSkills(email_skill_0)).toEqual([]);
     });
 
     it('for a user with one skill getSkills() should return one skill', function () {
-      var email = '1_skill@example.com';
-      skillService.putSkill(email, "UX", true);
-      skills = skillService.getSkills('1_skill@example.com');
+      skills = skillService.getSkills(email_skill_1);
       expect(skills.length).toEqual(1);
       expect(skills[0].skill).toEqual("UX");
     })
@@ -102,4 +137,5 @@ describe('SkillService', function() {
     expect(skillsArray.length).toEqual(1);
     expect(skillsArray[0].skill).toEqual('Haskell');
   })
+
 });
