@@ -41,8 +41,8 @@ Template.searchResults.helpers({
         }
     },
 
-    encode: function(email) {
-        return encodeURI(email);
+    strip: function(email) {
+        return email.replace(/[@\.]/ig, '');
     }
 });
 

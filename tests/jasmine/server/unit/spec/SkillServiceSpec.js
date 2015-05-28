@@ -21,4 +21,8 @@ describe('SkillService', function () {
         expect(doc.key).toEqual("cobol");
         expect(doc.isMentorable).toEqual(true);
     })
+
+    it('strip() removes @ and . from String', function() {
+        expect(SkillService.strip('asd@asd.asd')).toEqual('asdasdasd');
+    })
 });
