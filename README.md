@@ -4,6 +4,8 @@ How well can you duck from your nemesis?
 
 [ducking-nemesis.meteor.com](http://ducking-nemesis.meteor.com)
 
+    $> meteor deploy ducking-nemesis.meteor.com
+
 Links
 =====
 
