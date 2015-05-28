@@ -39,6 +39,10 @@ Template.searchResults.helpers({
         } else {
             return [];
         }
+    },
+
+    encode: function(email) {
+        return encodeURI(email);
     }
 });
 
