@@ -43,6 +43,10 @@ Template.searchResults.helpers({
 
     strip: function(email) {
         return email.replace(/[@\.]/ig, '');
+    },
+
+    searchSkillInSession: function() {
+        return Session.get('search-skill');
     }
 });
 

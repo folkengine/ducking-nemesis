@@ -8,8 +8,8 @@
       this.server.call('fixtures/skills', callback);
     });
 
-    this.When(/^I enter the skill "([^"]*)"$/, function (arg1, callback) {
-      this.client.setValue('#search-skill-input', arg1).click("#search-skill-button", callback);
+    this.When(/^I enter the skill "([^"]*)"$/, function (skill, callback) {
+      this.client.setValue('#search-skill-input', skill).click("#search-skill-button", callback);
     });
 
     this.Then(/^I should see the email address "([^"]*)"$/, function (arg1, callback) {
