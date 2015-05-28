@@ -20,17 +20,27 @@ Template.skills.helpers({
 });
 
 Template.searchResults.helpers({
-    hasResults: function (skill) {
-        var skillService = new SkillService();
-        var users = skillService.getUsersBySkill(skill);
-        return users.length > 0;
+    hasResults: function () {
+        var skill = Session.get('search-skill');
+        if (skill) {
+            var skillService = new SkillService();
+            var users = skillService.getUsersBySkill(skill);
+            return users.length > 0;
+        } else {
+            return false;
+        }
     },
 
-    getResults: function(skill) {
-        var skillService = new SkillService();
-        return skillService.getUsersBySkill(skill);
+    getResults: function () {
+        var skill = Session.get('search-skill');
+        if (skill) {
+            var skillService = new SkillService();
+            return skillService.getUsersBySkill(skill);
+        } else {
+            return [];
+        }
     }
-})
+});
 
 UI.body.events({
     'click .remove-skill-link': function (event, ui) {
@@ -60,6 +70,9 @@ Template.skillEntry.events({
 Template.search.events({
     'click button#search-skill-button': function(evt) {
         evt.preventDefault();
+        var template = Template.instance();
+        var skill = template.$('#search-skill-input').val().trim();
+        Session.set('search-skill', skill);
     }
-})
+});
 
