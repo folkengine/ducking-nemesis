@@ -19,6 +19,19 @@ Template.skills.helpers({
 
 });
 
+Template.searchResults.helpers({
+    hasResults: function (skill) {
+        var skillService = new SkillService();
+        var users = skillService.getUsersBySkill(skill);
+        return users.length > 0;
+    },
+
+    getResults: function(skill) {
+        var skillService = new SkillService();
+        return skillService.getUsersBySkill(skill);
+    }
+})
+
 UI.body.events({
     'click .remove-skill-link': function (event, ui) {
         event.preventDefault();
@@ -43,3 +56,10 @@ Template.skillEntry.events({
         }
     }
 });
+
+Template.search.events({
+    'click button#search-skill-button': function(evt) {
+        evt.preventDefault();
+    }
+})
+

@@ -2,9 +2,10 @@
 
     'use strict';
 
-    var noSkill = "no_skill@ducking-nemesis.net";
-    var oneSkill = "one_skill@ducking-nemesis.net";
-    var multipleSkills = "multiple_skills@ducking-nemesis.net";
+    var email_skill_0 = 'no_skill@ducking-nemesis.net';
+    var email_skill_1 = 'one_skill@ducking-nemesis.net';
+    var email_skill_2 = 'multiple_skills@ducking-nemesis.net';
+    var email_skill_a = 'also_has_skill@ducking-nemesis.net';
 
     Meteor.methods({
         'reset': function () {
@@ -23,6 +24,39 @@
                     name: "Test User"
                 }
             });
+
+            Accounts.createUser({
+                username: email_skill_0,
+                email: email_skill_0,
+                password: email_skill_0,
+                profile: {
+                    name: email_skill_0
+                }
+            });
+            Accounts.createUser({
+                username: email_skill_1,
+                email: email_skill_1,
+                password: email_skill_1,
+                profile: {
+                    name: email_skill_1
+                }
+            });
+            Accounts.createUser({
+                username: email_skill_2,
+                email: email_skill_2,
+                password: email_skill_2,
+                profile: {
+                    name: email_skill_2
+                }
+            });
+            Accounts.createUser({
+                username: email_skill_a,
+                email: email_skill_a,
+                password: email_skill_a,
+                profile: {
+                    name: email_skill_a
+                }
+            });
         },
 
         'fixtures/user/create': function (user) {
@@ -39,15 +73,16 @@
             }
 
             Meteor.users.remove({});
-            createSkillsTestAccount(noSkill);
-            createSkillsTestAccount(oneSkill);
-            createSkillsTestAccount(multipleSkills);
+            createSkillsTestAccount(email_skill_0);
+            createSkillsTestAccount(email_skill_1);
+            createSkillsTestAccount(email_skill_2);
 
             var skillService = new SkillService();
             Skills.remove({});
-            skillService.putSkill(oneSkill, "php", true);
-            skillService.putSkill(multipleSkills, "Python", true);
-            skillService.putSkill(multipleSkills, "Perl", false);
+            skillService.putSkill(email_skill_1, "php", true);
+            skillService.putSkill(email_skill_2, "Python", true);
+            skillService.putSkill(email_skill_2, "Perl", false);
+            skillService.putSkill(email_skill_a, "Perl", false);
         }
 
     });

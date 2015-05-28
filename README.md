@@ -18,6 +18,7 @@ Pages
 * [Chai Assertion Library](http://chaijs.com/)
 * [Building a customized accounts ui for Meteor](http://blog.benmcmahen.com/post/41741539120/building-a-customized-accounts-ui-for-meteor)
 * [The right way to handle authentication and authorization in Cucumber for Meteor?](https://forums.meteor.com/t/the-right-way-to-handle-authentication-and-authorization-in-cucumber-for-meteor/2926)
+* [THE BEST METEOR PACKAGES YOU MUST KNOW TO CODE FASTER THAN EVER](https://gentlenode.com/journal/meteor-22-the-best-meteor-packages-you-must-know-to-code-faster-than-ever/52)
 * [DDP - Distributed Data Protocol](https://www.meteor.com/ddp)
 * [Cucumber.io](https://cucumber.io/)
 * [Webdriver.io](http://webdriver.io/)
