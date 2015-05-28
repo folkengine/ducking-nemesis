@@ -4,7 +4,7 @@ describe('SkillService', function() {
   var email_skill_1 = 'skill_1@example.com';
   var email_skill_2 = 'skill_2@example.com';
   var email_skill_uy = 'skill_uy@example.com';
-
+  var email_skill_uy2 = 'skill_uy2@example.com';
 
   beforeAll(function() {
     skillService = new SkillService();
@@ -12,33 +12,68 @@ describe('SkillService', function() {
     skillService.putSkill(email_skill_2, "UY", true);
     skillService.putSkill(email_skill_2, "UZ", true);
     skillService.putSkill(email_skill_uy, "UY", true);
+    skillService.putSkill(email_skill_uy2, "UY2", true);
   });
 
   beforeEach(function() {
 
   });
 
-  describe('I should be able to search for Users with specific skills', function() {
+  describe('I should be able to search for Users with skills sorted by specificity', function() {
+
+    //it('for a skill with no user', function() {
+    //  var skillMap = skillService.getSkillUserMap('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
+    //  expect(skillMap.length).toBe(0);
+    //});
+
+    it('for a skill possessed by three users with two subcategories', function() {
+      var skill = 'uy';
+      var skill2 = 'uy2';
+      var skillMap = skillService.getSkillUserMap(skill);
+      console.log("=====================");
+      console.log(skillMap);
+      expect(skillMap[skill] === undefined).toBe(false);
+      expect(skillMap[skill2] === undefined).toBe(false);
+      expect(skillMap['MOOOOOOOO'] === undefined).toBe(true);
+    });
+
+    //it('for a skill with two users', function() {
+    //  var skillMap = skillService.getSkillUserMap('UY');
+    //  expect(skillMap.indexOf(email_skill_2)).not.toEqual(-1);
+    //  expect(skillMap.indexOf(email_skill_uy)).not.toEqual(-1);
+    //});
+    //
+    //it('it does not return a user that I know does not have the skill', function() {
+    //  var skillMap = skillService.getSkillUserMap('UX');
+    //  expect(skillMap.indexOf(email_skill_0)).toEqual(-1);
+    //});
+
+  });
+
+  describe('I should be able to get Users by skill', function() {
+
     it('for a skill with no user', function() {
-      users = skillService.getUsersBySkill('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
+      var users = skillService.getUsersBySkill('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
       expect(users.length).toBe(0);
     });
 
     it('for a skill with one user', function() {
-      users = skillService.getUsersBySkill('UX');
+      var users = skillService.getUsersBySkill('UX');
       expect(users.indexOf(email_skill_1)).not.toEqual(-1);
     });
 
     it('for a skill with two users', function() {
-      users = skillService.getUsersBySkill('UY');
+      var users = skillService.getUsersBySkill('UY');
       expect(users.indexOf(email_skill_2)).not.toEqual(-1);
       expect(users.indexOf(email_skill_uy)).not.toEqual(-1);
     });
 
     it('it does not return a user that I know does not have the skill', function() {
-      users = skillService.getUsersBySkill('UX');
+      var users = skillService.getUsersBySkill('UX');
       expect(users.indexOf(email_skill_0)).toEqual(-1);
     });
+
+
 
   });
 
@@ -49,7 +84,7 @@ describe('SkillService', function() {
     });
 
     it('for a user with one skill getSkills() should return one skill', function () {
-      skills = skillService.getSkills(email_skill_1);
+      var skills = skillService.getSkills(email_skill_1);
       expect(skills.length).toEqual(1);
       expect(skills[0].skill).toEqual("UX");
     })
