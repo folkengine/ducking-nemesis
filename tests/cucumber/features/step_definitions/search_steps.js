@@ -13,8 +13,7 @@
     });
 
     this.Then(/^I should see the email address "([^"]*)"$/, function (arg1, callback) {
-      this.client.waitForVisible(arg1.replace(/[@\.]/ig, ''), 500, false, callback);
-      // this.client.call(callback);
+      this.client.waitForVisible('#' + arg1.replace(/[@\.]/ig, ''), 500, false, callback);
     });
   }
 
