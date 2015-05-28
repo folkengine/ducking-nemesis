@@ -31,7 +31,7 @@ Template.skillEntry.events({
     'click button#add-skill-button': function (evt) {
         evt.preventDefault();
         var template = Template.instance();
-        var skill = template.$('#add-skill-input').val();
+        var skill = template.$('#add-skill-input').val().trim();
         Meteor.call('PutSkill', skill, function (err) {
             if (err) {
                 alert('Error: ' + err);
