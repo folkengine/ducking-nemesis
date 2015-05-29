@@ -47,6 +47,24 @@ Template.searchResults.helpers({
 
     searchSkillInSession: function() {
         return Session.get('search-skill');
+    },
+
+    searchResultSkills: function() {
+        var skill = Session.get('search-skill');
+        if (skill) {
+            var skillService = new SkillService();
+            var map = skillService.getSkillUserMap(skill);
+            var array = [];
+            for (var k in map) {
+                var obj = {};
+                obj.skill = k;
+                obj.emails = map[k];
+                array.push(obj);
+            }
+            return array;
+        } else {
+            return [];
+        }
     }
 });
 

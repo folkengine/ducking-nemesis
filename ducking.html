@@ -53,7 +53,7 @@
 <template name="search">
     <form id="skill-search-form">
         <fieldset>
-            <input id="search-skill-input" type="text" value="" />
+            <input id="search-skill-input" type="text" value=""/>
             <button id="search-skill-button">Search</button>
         </fieldset>
     </form>
@@ -62,16 +62,14 @@
 
 <template name="searchResults">
     {{#if hasResults}}
-        <div id="email-list">
-            <label>Users with skill:</label>
+        {{#each searchResultSkills}}
+            <div data-id="{{skill}}">{{skill}}</div>
             <ul>
-                {{#each getResults}}
-                    <li>
-                        <span id="{{strip this}}">{{this}}</span>
-                    </li>
-                {{/each}}
+            {{#each emails}}
+                <span id="{{strip this}}">{{this}}</span>
+            {{/each}}
             </ul>
-        </div>
+        {{/each}}
     {{else}}
         <div id="no-results">No one has listed this skill in the database.</div>
     {{/if}}
