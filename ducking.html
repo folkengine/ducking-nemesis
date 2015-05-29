@@ -3,11 +3,17 @@
 </head>
 
 <body>
-<h1>Welcome to Meteor!</h1>
+<h1>Mad Skillz</h1>
 
-{{> login}}
-{{> search}}
-{{> protected}}
+<div class="personal-area">
+    {{> login}}
+    {{> protected}}
+</div>
+<div class="search-area">
+    {{> search}}
+</div>
+
+
 
 </body>
 
@@ -44,18 +50,17 @@
 <template name="skillEntry">
     <form id="skill-entry-form">
         <fieldset>
-            Add Skill: <input id="add-skill-input" type="text" value=""/>
-            <button id="add-skill-button">Add</button>
-        </fieldset>
+
+            <span class="boxy"><input id="add-skill-input" type="text" value=""/>
+            <button id="add-skill-button">Add Skill</button></span></fieldset>
     </form>
 </template>
 
 <template name="search">
     <form id="skill-search-form">
-        <fieldset>
-            <input id="search-skill-input" type="text" value=""/>
-            <button id="search-skill-button">Search</button>
-        </fieldset>
+        <fieldset id="skill-search-fields">
+           <span class="boxy"><input id="search-skill-input" type="text" value=""/>
+            <button id="search-skill-button">Search</button></span></fieldset>
     </form>
     {{> searchResults}}
 </template>
@@ -66,7 +71,7 @@
             <div data-id="{{skill}}">{{skill}}</div>
             <ul>
             {{#each emails}}
-                <span id="{{strip this}}">{{this}}</span>
+                <li><span id="{{strip this}}">{{this}}</span></li>
             {{/each}}
             </ul>
         {{/each}}

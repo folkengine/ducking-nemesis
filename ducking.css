@@ -11,3 +11,29 @@
     font-weight: bold;
     text-decoration: none;
 }
+
+fieldset {
+    margin: 25px;
+    padding-top: 10px;
+    border-style: none;
+    border-width: 5px;
+}
+
+#skill-search-form fieldset {
+
+
+}
+
+.boxy {
+    border-style: solid;
+    border-color: darkred;
+    border-width: 3px;
+    padding: 3px;
+}
+
+.personal-area {
+    z-index: 10;
+    position: absolute;
+    right: 250px;
+    top: 20px;
+}
