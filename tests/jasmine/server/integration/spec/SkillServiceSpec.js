@@ -23,15 +23,7 @@ describe('SkillService', function() {
 
     it('for a skill no one has it returns empty', function() {
       var users = skillService.getSkillUserMap('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
-
-      // TODO RF
-      var empty = true;
-      for(var prop in users) {
-        if(obj.hasOwnProperty(prop))
-          empty = false;
-      }
-
-      expect(empty).toBe(true);
+      expect(skillService.isMapEmpty(users)).toBe(true);
     });
 
 
