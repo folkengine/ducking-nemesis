@@ -21,6 +21,20 @@ describe('SkillService', function() {
 
   describe('I should be able to search for Users with skills sorted by specificity', function() {
 
+    it('for a skill no one has it returns empty', function() {
+      var users = skillService.getSkillUserMap('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
+
+      // TODO RF
+      var empty = true;
+      for(var prop in users) {
+        if(obj.hasOwnProperty(prop))
+          empty = false;
+      }
+
+      expect(empty).toBe(true);
+    });
+
+
     it('for a skill possessed by three users with two subcategories', function() {
       var skill = 'uy';
       var skill2 = 'uy2';
