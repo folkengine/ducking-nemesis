@@ -24,6 +24,8 @@ describe('SkillService', function() {
     it('for a skill no one has it returns empty', function() {
       var users = skillService.getSkillUserMap('NO_SUCH_SKILLYADAYADYADYADYADYADYADYADYAD');
       expect(skillService.isMapEmpty(users)).toBe(true);
+      var users = skillService.getSkillUserMap('uy');
+      expect(skillService.isMapEmpty(users)).toBe(false);
     });
 
 
